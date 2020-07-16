@@ -14,6 +14,14 @@ class Seller(models.Model):
     def __str__(self):
         return self.email
 
+class Buyer(models.Model):
+    email = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
+    location = models.CharField(max_length=200)
+
+    def __str__(self):
+        return '%s living at %s' % (self.name, self.location)
+
 class Item(models.Model): # deletable.
     price = models.CharField(max_length=50)
     description = models.TextField()
@@ -26,15 +34,6 @@ class Item(models.Model): # deletable.
 
     def __str__(self):
         return '%s sold at %s' % (self.name, self.price)
-
-class Buyer(models.Model):
-    email = models.CharField(max_length=200)
-    name = models.CharField(max_length=200)
-    item = models.TextField()
-    location = models.CharField(max_length=200)
-
-    def __str__(self):
-        return '%s living at %s' % (self.name, self.location)
 
 class Interest(models.Model):
     buyer = models.ForeignKey(Buyer, on_delete=models.CASCADE)

@@ -16,6 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.conf.urls import url, include
+from django.contrib import admin
+from api.resources import ItemResource
+
+item_resource = ItemResource()
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url('api/', include(item_resource.urls)),
 ]
