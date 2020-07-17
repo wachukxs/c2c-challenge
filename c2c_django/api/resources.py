@@ -4,6 +4,7 @@ from tastypie.authorization import Authorization
 from tastypie.constants import ALL, ALL_WITH_RELATIONS
 
 class ItemResource(ModelResource):
+    image_name = models.FileField(attribute="image_name", null=False, blank=True)
     class Meta:
         queryset = Item.objects.all()
         resource_name = 'items'

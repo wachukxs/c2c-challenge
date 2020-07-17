@@ -28,7 +28,7 @@ class Item(models.Model): # deletable.
     image_name = models.CharField(max_length=200)
     status = models.CharField(max_length=200) # 'sold' or 'for-sale'.
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, help_text='When the item was created')
 
     def __str__(self):
         return '%s sold at %s' % (self.name, self.price)
@@ -36,7 +36,7 @@ class Item(models.Model): # deletable.
 class Interest(models.Model):
     buyer = models.ForeignKey(Buyer, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True) # when the buyer got intrested.
+    created_at = models.DateTimeField(auto_now_add=True, help_text='When the buyer showed interest in the item')
 
     def __str__(self):
         return '%s is intrested in %s' % (self.buyer, self.created_at)
