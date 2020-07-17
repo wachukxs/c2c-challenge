@@ -1,4 +1,4 @@
-Django==2.0.7
+Django==2.2.13
 django-tastypie==0.14.3
 django-cors-headers==3.4.0
 Pillow
