@@ -25,7 +25,7 @@ class Item(models.Model): # deletable.
     price = models.CharField(max_length=50)
     description = models.TextField()
     name = models.CharField(max_length=100)
-    image_name = models.CharField(max_length=200)
+    image_name = models.ImageField(upload_to='image-uploads', height_field=None, width_field=None, max_length=100)
     status = models.CharField(max_length=200) # 'sold' or 'for-sale'.
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, help_text='When the item was created')

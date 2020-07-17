@@ -3,8 +3,10 @@ from api.models import Item, Interest, Buyer, Seller
 from tastypie.authorization import Authorization
 from tastypie.constants import ALL, ALL_WITH_RELATIONS
 
+from django.db import models
+
 class ItemResource(ModelResource):
-    image_name = models.FileField(attribute="image_name", null=False, blank=True)
+    image_name = models.ImageField(upload_to='image-uploads', height_field=None, width_field=None, max_length=100)
     class Meta:
         queryset = Item.objects.all()
         resource_name = 'items'
