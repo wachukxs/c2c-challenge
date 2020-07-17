@@ -23,5 +23,6 @@ class BuyerResource(ModelResource):
 class SellerResource(ModelResource):
     class Meta:
         queryset = Seller.objects.all()
-        resource_name = 'seller'
+        resource_name = 'sellers'
         authorization = Authorization()
+        excludes = ['password', 'created_at']

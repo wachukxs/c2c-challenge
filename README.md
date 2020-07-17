@@ -5,4 +5,6 @@ clone.
 
 run ```python manage.py runserver```
 
-make your api calls to ```http://localhost:8000/api/```
+api doc can be gotten here: ```http://localhost:8000/api/v1/```
+
+make your api calls to ```http://localhost:8000/api/v1/{entity}/```

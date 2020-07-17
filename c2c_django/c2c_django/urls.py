@@ -15,14 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from tastypie.api import Api
 from django.conf.urls import url, include
 from django.contrib import admin
-from api.resources import ItemResource
+from api.resources import ItemResource, SellerResource, InterestResource, BuyerResource
 
-item_resource = ItemResource()
+v1_api = Api(api_name='v1')
+v1_api.register(SellerResource())
+v1_api.register(InterestResource())
+v1_api.register(ItemResource())
+v1_api.register(BuyerResource())
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    url('api/', include(item_resource.urls)),
+    path(r'^admin/', admin.site.urls),
+    url(r'^api/', include(v1_api.urls)),
 ]

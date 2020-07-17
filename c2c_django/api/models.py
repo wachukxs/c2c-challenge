@@ -8,7 +8,6 @@ class Seller(models.Model):
     state_of_residence = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
     password = models.CharField(max_length=200)
-    status = models.CharField(max_length=200) # 'sold' or 'for-sale'.
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -27,6 +26,7 @@ class Item(models.Model): # deletable.
     description = models.TextField()
     name = models.CharField(max_length=100)
     image_url = models.CharField(max_length=200)
+    status = models.CharField(max_length=200) # 'sold' or 'for-sale'.
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     seller_location = models.CharField(max_length=200)
