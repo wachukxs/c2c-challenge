@@ -25,12 +25,10 @@ class Item(models.Model): # deletable.
     price = models.CharField(max_length=50)
     description = models.TextField()
     name = models.CharField(max_length=100)
-    image_url = models.CharField(max_length=200)
+    image_name = models.CharField(max_length=200)
     status = models.CharField(max_length=200) # 'sold' or 'for-sale'.
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    seller_location = models.CharField(max_length=200)
-    intrester_buyers = models.ManyToManyField(Buyer)
 
     def __str__(self):
         return '%s sold at %s' % (self.name, self.price)
