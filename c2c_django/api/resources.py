@@ -1,6 +1,7 @@
 from tastypie.resources import ModelResource
 from api.models import Item, Interest, Buyer, Seller
 from tastypie.authorization import Authorization
+from tastypie.constants import ALL, ALL_WITH_RELATIONS
 
 class ItemResource(ModelResource):
     class Meta:
@@ -13,6 +14,7 @@ class InterestResource(ModelResource):
         queryset = Interest.objects.all()
         resource_name = 'interests'
         authorization = Authorization()
+        allowed_methods = ['get']
 
 class BuyerResource(ModelResource):
     class Meta:
@@ -26,3 +28,7 @@ class SellerResource(ModelResource):
         resource_name = 'sellers'
         authorization = Authorization()
         excludes = ['password', 'created_at']
+        filtering = {
+            "slug": ('exact', 'startswith',),
+            "email": ALL,
+        }

@@ -27,6 +27,6 @@ v1_api.register(ItemResource())
 v1_api.register(BuyerResource())
 
 urlpatterns = [
-    path(r'^admin/', admin.site.urls),
-    url(r'^api/', include(v1_api.urls)),
+    path('admin/', admin.site.urls),
+    url('api/', include(v1_api.urls)),
 ]
